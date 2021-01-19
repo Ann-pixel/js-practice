@@ -45,4 +45,13 @@ const [gk, ...fieldPlayers] = players1;
 const allPlayers = [...players1, ...players2];
 const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
 const { team1, x: draw, team2 } = game.odds;
-console.log(team1, team2, draw);
+
+function printGoals(...goals) {
+  console.log(goals.length);
+  for (i = 0; i < goals.length; i++) {
+    console.log(goals[i]);
+  }
+}
+printGoals(...game.scored);
+team1 > team2 && console.log("team2 is likely to win");
+team1 < team2 && console.log("team1 is likely to win");
