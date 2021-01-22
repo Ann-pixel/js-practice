@@ -1,3 +1,37 @@
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  const text = document.querySelector("textarea").value; //i/p = a_b
+  const lines = text.split("\n"); //arr of lines.
+  console.log(lines);
+  for (const [idx, line] of lines.entries()) {
+    const tLine = line.toLowerCase().trim();
+    const secondStart = tLine.indexOf("_");
+    const cLine = tLine.replace("_", "");
+    const capChar = cLine.charAt(secondStart).toUpperCase();
+    const preSub = cLine.slice(0, secondStart);
+    const postSub = cLine.slice(secondStart + 1);
+    const camelResult = `${preSub}${capChar}${postSub}`;
+    const paddedCamel = camelResult.padEnd(20, " ");
+    const ticks = "✅".repeat(idx + 1);
+    const result = paddedCamel + ticks;
+
+    console.log(result);
+  }
+});
+// i/p--
+// underscore_case
+//  first_name
+// Some_Variable
+//   calculate_AGE
+// delayed_departure
+// result:
+// underscoreCase      ✅
+// firstName           ✅✅
+// someVariable        ✅✅✅
+// calculateAge        ✅✅✅✅
+// delayedDeparture    ✅✅✅✅✅
 const game = {
   team1: "Bayern Munich",
   team2: "Borrussia Dortmund",
